@@ -30,12 +30,9 @@ public class TweetListener implements StreamListener {
 
 
         try {
+            
             String json = ow.writeValueAsString((Object)tweet);
-
-            System.out.println("Enviando...");
             r.convertAndSend("tweet",json);
-            System.out.println("Enviado");
-
 
         } catch (JsonProcessingException e) {
             System.out.println("error");

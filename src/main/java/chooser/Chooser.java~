@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -36,6 +37,8 @@ public class Chooser implements CommandLineRunner {
 
     private static RabbitTemplate rabbitTemplate;
 
+    private CountDownLatch latch = new CountDownLatch(1);
+
     public Chooser(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
@@ -52,6 +55,13 @@ public class Chooser implements CommandLineRunner {
         list.add(new TweetListener(rabbitTemplate));
 
         Stream s = twitter.streamingOperations().filter("madrid",list);
+
+	/**
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
 
 
     }
