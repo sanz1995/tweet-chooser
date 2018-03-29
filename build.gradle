@@ -1,32 +1,38 @@
+
 buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+apply plugin: 'eclipse-wtp'
 
-bootJar {
-    baseName = 'gs-messaging-rabbitmq'
-    version =  '0.1.0'
-}
+group = 'es.unizar.tmdad'
+version = '2018'
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+ext {
+    boostrapVersion = '4.0.0'
+    fontawesomeVersion = '5.0.6'
+    mustacheVersion = '2.3.0'
+}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-amqp")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile('org.springframework.boot:spring-boot-starter-social-twitter')
+
 }
 
