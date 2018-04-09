@@ -1,4 +1,4 @@
-package chooser;
+package translator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,8 +18,6 @@ public class TweetListener implements StreamListener {
 
     public TweetListener(RabbitTemplate rabbit){
         r = rabbit;
-
-        r.convertAndSend("tweet","hola");
     }
 
 
@@ -30,8 +28,9 @@ public class TweetListener implements StreamListener {
 
 
         try {
+            MyTweet t = new MyTweet(String.valueOf(tweet.getId()),tweet.getUnmodifiedText(),tweet.getFromUser());
             
-            String json = ow.writeValueAsString((Object)tweet);
+            String json = ow.writeValueAsString((Object)t);
             r.convertAndSend("tweet",json);
 
         } catch (JsonProcessingException e) {
