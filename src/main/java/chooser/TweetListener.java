@@ -1,4 +1,4 @@
-package translator;
+package chooser;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,5 +53,10 @@ public class TweetListener implements StreamListener {
     @Override
     public void onWarning(StreamWarningEvent warningEvent) {
 
+    }
+
+    public void stop(){
+        System.out.println("cerrando");
+        Thread.currentThread().interrupt();
     }
 }
