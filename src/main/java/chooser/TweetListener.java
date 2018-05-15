@@ -28,7 +28,8 @@ public class TweetListener implements StreamListener {
 
 
         try {
-            MyTweet t = new MyTweet(String.valueOf(tweet.getId()),tweet.getUnmodifiedText(),tweet.getFromUser());
+            MyTweet t = new MyTweet(String.valueOf(tweet.getId()),tweet.getUnmodifiedText(),
+                    tweet.getFromUser(),tweet.getLanguageCode());
             
             String json = ow.writeValueAsString((Object)t);
             r.convertAndSend("tweet",json);

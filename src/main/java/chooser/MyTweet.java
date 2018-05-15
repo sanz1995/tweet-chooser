@@ -9,14 +9,17 @@ public class MyTweet {
 
     private String user;
 
+    private String lang;
+
 
     public MyTweet() {
     }
 
-    public MyTweet(String id, String text, String user) {
+    public MyTweet(String id, String text, String user, String lang) {
         this.id = id;
         this.text = text;
         this.user = user;
+        this.lang=lang;
     }
 
 
@@ -34,5 +37,7 @@ public class MyTweet {
     }
 
 
-
+    public String getLang() {
+        return lang;
+    }
 }
