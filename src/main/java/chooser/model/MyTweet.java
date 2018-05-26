@@ -1,4 +1,4 @@
-package chooser;
+package chooser.model;
 
 
 public class MyTweet {

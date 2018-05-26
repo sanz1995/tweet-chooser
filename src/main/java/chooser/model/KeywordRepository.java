@@ -1,4 +1,4 @@
-package chooser;
+package chooser.model;
 
 import org.springframework.data.repository.CrudRepository;
 
